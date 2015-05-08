@@ -1,8 +1,8 @@
 ﻿using Mapsui.UI.Xaml;
 
-namespace BlackBird.WPF.BlackBirdSystem
+namespace Blackbird.WPF.BlackBirdSystem
 {
-    public class BlackBirdSystemInfoObject
+    public class BlackbirdSystemInfoObject
     {
         public MapControl MapControl { get; set; }
     }

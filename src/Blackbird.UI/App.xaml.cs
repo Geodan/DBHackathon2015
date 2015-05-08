@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows;
-using BlackBird.WPF.Logging;
+using Blackbird.WPF.Logging;
 
-namespace BlackBird.WPF
+namespace Blackbird.WPF
 {
     public partial class App
     {

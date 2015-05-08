@@ -1,5 +1,5 @@
 ﻿
-namespace BlackBird.WPF.Logging
+namespace Blackbird.WPF.Logging
 {
     public enum LogLevels
     {

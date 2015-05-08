@@ -1,26 +1,27 @@
 ﻿using System;
-using BlackBird.WPF.BlackBirdSystem;
-using BlackBird.WPF.Logging;
+using Blackbird.WPF.BlackBirdSystem;
+using Blackbird.WPF.Logging;
 using BruTile.Web;
 using Mapsui.Layers;
+using Mapsui.UI.Xaml;
 
-namespace BlackBird.WPF
+namespace Blackbird.WPF
 {
     public partial class MainWindow
     {
-        private readonly BlackBirdSystem.BlackBirdSystem _blackBirdSystem;
+        private readonly BlackbirdSystem _blackBirdSystem;
 
         public MainWindow()
         {
             InitializeComponent();
             Log4netLogger.Debug("Starting program");
 
-            var blackBirdSystemInfoObject = new BlackBirdSystemInfoObject
+            var blackBirdSystemInfoObject = new BlackbirdSystemInfoObject
             {
                 MapControl = MapControl
             };
 
-            _blackBirdSystem = new BlackBirdSystem.BlackBirdSystem(this, blackBirdSystemInfoObject);
+            _blackBirdSystem = new BlackbirdSystem(this, blackBirdSystemInfoObject);
 
             AddOsm();
         }

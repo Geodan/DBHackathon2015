@@ -1,8 +1,8 @@
-﻿using BlackBird.WPF.Logging;
+﻿using Blackbird.WPF.Logging;
 using Mapsui.Geometries;
 using Mapsui.UI.Xaml;
 
-namespace BlackBird.WPF.Utils
+namespace Blackbird.WPF.Utils
 {
     public delegate void MapControlTappedEventHandler(object sender, Point location);
     public delegate void MapControlTouchEventHandler(System.Windows.Input.TouchEventArgs touchEvent);

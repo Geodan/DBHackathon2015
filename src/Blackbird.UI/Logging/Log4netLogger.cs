@@ -5,7 +5,7 @@ using System.Reflection;
 using log4net;
 using log4net.Config;
 
-namespace BlackBird.WPF.Logging
+namespace Blackbird.WPF.Logging
 {
     public static class Log4netLogger
     {

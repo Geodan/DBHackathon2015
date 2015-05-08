@@ -7,7 +7,7 @@
     <ProjectGuid>{7C941929-ED2B-4FFA-822C-23F05F64D617}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BlackBird.WPF</RootNamespace>
+    <RootNamespace>Blackbird.WPF</RootNamespace>
     <AssemblyName>Blackbird.WPF</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -82,8 +82,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BlackBirdSystem\BlackBirdSystem.cs" />
-    <Compile Include="BlackBirdSystem\BlackBirdSystemInfoObject.cs" />
+    <Compile Include="BlackbirdSystem\BlackbirdSystem.cs" />
+    <Compile Include="BlackbirdSystem\BlackbirdSystemInfoObject.cs" />
     <Compile Include="Logging\Log4netLogger.cs" />
     <Compile Include="Logging\LogLevels.cs" />
     <Compile Include="MainWindow.xaml.cs">

@@ -1,21 +1,21 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Windows.Threading;
-using BlackBird.WPF.Utils;
+using Blackbird.WPF.Utils;
 using Mapsui.Geometries;
 using Mapsui.UI.Xaml;
 using Mapsui.Utilities;
 using Timer = System.Threading.Timer;
 
-namespace BlackBird.WPF.BlackBirdSystem
+namespace Blackbird.WPF.BlackBirdSystem
 {
-    public sealed class BlackBirdSystem
+    public sealed class BlackbirdSystem
     {
         private readonly MainWindow _parent;
         private readonly MapControl _mapcontrol;
         private readonly LayerManager _layerManager;
 
-        public BlackBirdSystem(MainWindow parent, BlackBirdSystemInfoObject infoObject)
+        public BlackbirdSystem(MainWindow parent, BlackbirdSystemInfoObject infoObject)
         {
             _parent = parent;           
             _mapcontrol = infoObject.MapControl;

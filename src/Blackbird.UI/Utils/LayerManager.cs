@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using BlackBird.WPF.Logging;
+using Blackbird.WPF.Logging;
 using Mapsui;
 using Mapsui.Layers;
 
-namespace BlackBird.WPF.Utils
+namespace Blackbird.WPF.Utils
 {
     /// <summary>
     /// Helper class for adding and removing layers on the map, layers shouldn't be 
