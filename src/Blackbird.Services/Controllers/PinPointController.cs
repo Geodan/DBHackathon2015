@@ -14,7 +14,6 @@ namespace Blackbird.Services.Controllers
         public bool IsInTunnel { get; set; }
     }
 
-
     public class PinPointController : ApiController
     {
         private readonly string connectionString;
@@ -24,11 +23,12 @@ namespace Blackbird.Services.Controllers
             connectionString =ConfigurationManager.ConnectionStrings["DbConnection"].ConnectionString;
         }
 
+        // tunnelurl = http://localhost:60687/api/pinpoint?longitude=10.0339239315153&latitude=53.6273756844966
         // url http://localhost:60687/api/pinpoint?longitude=10&latitude=50
         public Pinpoint GetPinPoint(double longitude, double latitude)
         {
             var wkt = String.Format("POINT({0} {1})", longitude, latitude);
-            var pp = new Pinpoint {District = GetDistrict(wkt), IsInTunnel = true};
+            var pp = new Pinpoint {District = GetDistrict(wkt), IsInTunnel = IsInTunnel(wkt)};
             return pp;
         }
 
@@ -47,25 +47,22 @@ namespace Blackbird.Services.Controllers
             }
         }
 
-        private Pinpoint GetTunnel(string wkt)
+        private bool IsInTunnel(string wkt)
         {
-            // sample coordinate 10.0339239315153 53.6273756844966
-            var sql = @"select geom
+            var sql = @"select gid
                 from dbbahn.tunnel t 
-                where ST_Intersects(t.geom, ST_GeomFromText('POINT(10.0339239315153 53.6273756844966)',4326)) = true";
+                where ST_Intersects(t.geom, ST_GeomFromText(@wkt,4326)) = true";
 
             using (var conn = new NpgsqlConnection(connectionString))
             {
                 conn.Open();
-                var pinpointsRes = conn.Query<Pinpoint>(sql, new { Wkt = wkt });
+                var pinpointsRes = conn.Query<int>(sql, new { Wkt = wkt });
                 conn.Close();
-                var pp = pinpointsRes.ToList()[0];
-                //pp.Type = "district";
-                //return pp;
-                return null;
+                var isintunnel = pinpointsRes.ToList().Count>0;
+
+                return isintunnel;
             }
         }
-
     }
 }
 
