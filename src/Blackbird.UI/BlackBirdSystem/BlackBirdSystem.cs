@@ -30,7 +30,7 @@ namespace Blackbird.WPF.BlackBirdSystem
             _mapcontrol.MouseLeftButtonUp += MapcontrolMouseLeftButtonUp;
         }
 
-        public LayerManager LayerHelper
+        public LayerManager LayerManager
         {
             get { return _layerManager; }
         }

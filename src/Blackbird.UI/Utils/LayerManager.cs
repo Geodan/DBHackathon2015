@@ -29,7 +29,7 @@ namespace Blackbird.WPF.Utils
         public event ChangedEventHandler LayerRemoved;
 
         /// <summary>
-        /// Creates the LayerHelper for managing different layers on the map
+        /// Creates the LayerManager for managing different layers on the map
         /// </summary>
         public LayerManager()
         {
@@ -57,7 +57,7 @@ namespace Blackbird.WPF.Utils
         }
 
         /// <summary>
-        /// Get all layers added to the LayerHelper in 1 List
+        /// Get all layers added to the LayerManager in 1 List
         /// Sorted by LayerName
         /// </summary>
         public List<ILayer> GetAllLayers()

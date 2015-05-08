@@ -1,5 +1,6 @@
 ﻿using System;
 using Blackbird.WPF.BlackBirdSystem;
+using Blackbird.WPF.Layers;
 using Blackbird.WPF.Logging;
 using BruTile.Web;
 using Mapsui.Layers;
@@ -22,14 +23,20 @@ namespace Blackbird.WPF
             };
 
             _blackBirdSystem = new BlackbirdSystem(this, blackBirdSystemInfoObject);
+            LayerManagerControl.LayerManager = _blackBirdSystem.LayerManager;
 
-            AddOsm();
+            SetupLayers();
         }
 
-        private void AddOsm()
+        private void SetupLayers()
         {
             var osm = new TileLayer(new OsmTileSource()) { Name = "osm", Tag = Guid.Parse("7D1897F4-6D45-4FBA-919B-F39A7E8B8938").ToString() };
-            _blackBirdSystem.LayerHelper.AddBackgroundLayer(osm);
+            _blackBirdSystem.LayerManager.AddBackgroundLayer(osm);
+
+            foreach (var layer in LayerInitialization.GetLayers())
+            {
+                _blackBirdSystem.LayerManager.AddContextLayer(layer);
+            }            
         }
     }
 }
