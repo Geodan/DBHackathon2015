@@ -2,6 +2,7 @@
 using Blackbird.WPF.BlackBirdSystem;
 using Blackbird.WPF.Layers;
 using Blackbird.WPF.Logging;
+using BruTile.Tms;
 using BruTile.Web;
 using Mapsui.Layers;
 using Mapsui.UI.Xaml;
@@ -30,7 +31,11 @@ namespace Blackbird.WPF
 
         private void SetupLayers()
         {
-            var osm = new TileLayer(new OsmTileSource()) { Name = "osm", Tag = Guid.Parse("7D1897F4-6D45-4FBA-919B-F39A7E8B8938").ToString() };
+            var ts = new TmsTileSource("http://c.tile.stamen.com/toner-lite", new BruTile.Predefined.GlobalSphericalMercator());
+            var osm = new TileLayer(ts) { Name = "osm", Tag = Guid.Parse("7D1897F4-6D45-4FBA-919B-F39A7E8B8938").ToString() };
+
+            //var osm = new TileLayer(new OsmTileSource()) { Name = "osm", Tag = Guid.Parse("7D1897F4-6D45-4FBA-919B-F39A7E8B8938").ToString() };
+
             _blackBirdSystem.LayerManager.AddBackgroundLayer(osm);
 
             foreach (var layer in LayerInitialization.GetLayers())
