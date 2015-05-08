@@ -37,9 +37,9 @@ namespace Blackbird.Services.Controllers
 
         private Pinpoint GetDistrict(string wkt)
         {
-            const string sql = @"select gid as id, name_3 as name
+            const string sql = @"select gid as id, name_1 || ', ' || name_2 || ', ' || name_3 as name
             from administrative.district d 
-                where ST_Intersects(d.geom, ST_GeomFromText('POINT(10 50)',4326)) = true";
+                where ST_Intersects(d.geom, ST_GeomFromText(@wkt,4326)) = true";
 
             using (var conn = new NpgsqlConnection(connectionString))
             {
