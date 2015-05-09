@@ -12,7 +12,7 @@ namespace Blackbird.WPF.UI.Controls
         public IncidentBar()
         {
             InitializeComponent();
-            _timer = new Timer(10);
+            _timer = new Timer(1000);
             _timer.Elapsed += _timer_Elapsed;
         }
 

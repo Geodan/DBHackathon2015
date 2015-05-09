@@ -2,10 +2,9 @@
 using Blackbird.WPF.BlackBirdSystem;
 using Blackbird.WPF.Layers;
 using Blackbird.WPF.Logging;
+using Blackbird.WPF.Utils;
 using BruTile.Tms;
-using BruTile.Web;
 using Mapsui.Layers;
-using Mapsui.UI.Xaml;
 
 namespace Blackbird.WPF
 {
