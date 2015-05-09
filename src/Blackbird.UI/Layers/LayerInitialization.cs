@@ -10,15 +10,15 @@ namespace Blackbird.WPF.Layers
         {
             var layers = new List<ILayer>();
 
-            var tunnel = CreateWmsProvider("EPSG:3857", new List<string> { "tunnel" }, "http://192.168.2.74:8989/geoserver/cite/wms?service=WMS&request=getcapabilities");
+            var tunnel = CreateWmsProvider("EPSG:3857", new List<string> { "tunnel" }, string.Format("{0}cite/wms?service=WMS&request=getcapabilities", Constants.Geoserver));
             var tunnelLayer = new ImageLayer("Tunnels") { DataSource = tunnel };
             layers.Add(tunnelLayer);
 
-            var rails = CreateWmsProvider("EPSG:3857", new List<string> { "streckennetz" }, "http://192.168.2.74:8989/geoserver/cite/wms?service=WMS&request=getcapabilities");
+            var rails = CreateWmsProvider("EPSG:3857", new List<string> { "streckennetz" }, string.Format("{0}cite/wms?service=WMS&request=getcapabilities", Constants.Geoserver));
             var railsLayer = new ImageLayer("Rails") { DataSource = rails };
             layers.Add(railsLayer);
 
-            var kmp = CreateWmsProvider("EPSG:3857", new List<string> { "kilometerpoints" }, "http://192.168.2.74:8989/geoserver/cite/wms?service=WMS&request=getcapabilities");
+            var kmp = CreateWmsProvider("EPSG:3857", new List<string> { "kilometerpoints" }, string.Format("{0}cite/wms?service=WMS&request=getcapabilities", Constants.Geoserver));
             var kmpLayer = new ImageLayer("Kilometer points") { DataSource = kmp };
             layers.Add(kmpLayer);
 

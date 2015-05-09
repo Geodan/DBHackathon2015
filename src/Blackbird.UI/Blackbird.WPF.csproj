@@ -100,6 +100,7 @@
     <Compile Include="API\Models\PinPointResult.cs" />
     <Compile Include="API\Models\Task.cs" />
     <Compile Include="API\WebRequests.cs" />
+    <Compile Include="Constants.cs" />
     <Compile Include="Layers\LayerInitialization.cs" />
     <Compile Include="Messaging\SmsMessenger.cs" />
     <Compile Include="UI\Controls\IncidentBar.xaml.cs">
