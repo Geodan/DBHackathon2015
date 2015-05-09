@@ -12,11 +12,15 @@ namespace Blackbird.Services.Controllers
     {
         public string District { get; set; }
         public bool IsInTunnel { get; set; }
+        public string Tasks { get; set; }
     }
 
     public class PinPointController : ApiController
     {
         private readonly string connectionString;
+        private string tel1 = "0031062237124";
+        private string tel2 = "0031062237";
+
 
         public PinPointController()
         {
@@ -30,6 +34,7 @@ namespace Blackbird.Services.Controllers
         {
             var wkt = String.Format("POINT({0} {1})", longitude, latitude);
             var pp = new Pinpoint {District = GetDistrict(wkt), IsInTunnel = IsInTunnel(wkt)};
+            pp = addTasks(pp);
             return pp;
         }
 
@@ -62,6 +67,23 @@ namespace Blackbird.Services.Controllers
 
                 return isintunnel;
             }
+        }
+
+        private Pinpoint addTasks(Pinpoint pinpoint)
+        {
+            var tasks = String.Empty;
+
+            // rule 1 send sms to 
+
+            tasks += "Send SMS message, police " + pinpoint.District.Split(',')[2] +"," + tel1 +"#";
+            if (pinpoint.IsInTunnel)
+            {
+                tasks += "Send SMS message, Angela Merkel " + "," + tel2;
+            }
+
+            pinpoint.Tasks = tasks;
+            return pinpoint;
+
         }
     }
 }
