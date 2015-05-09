@@ -23,6 +23,7 @@ namespace Blackbird.Services.Controllers
             connectionString =ConfigurationManager.ConnectionStrings["DbConnection"].ConnectionString;
         }
 
+        // tunnelurl2: http://localhost:60687/api/pinpoint?latitude=50.841063222070794&longitude=9.59353920394821
         // tunnelurl = http://localhost:60687/api/pinpoint?longitude=10.0339239315153&latitude=53.6273756844966
         // url http://localhost:60687/api/pinpoint?longitude=10&latitude=50
         public Pinpoint GetPinPoint(double longitude, double latitude)
@@ -51,8 +52,7 @@ namespace Blackbird.Services.Controllers
         {
             var sql = @"select gid
                 from dbbahn.tunnel t 
-                where ST_Intersects(t.geom, ST_GeomFromText(@wkt,4326)) = true";
-
+                where ST_Intersects(t.geom, st_buffer(ST_GeomFromText(@Wkt,4326),0.01)) = true";
             using (var conn = new NpgsqlConnection(connectionString))
             {
                 conn.Open();
