@@ -4,6 +4,7 @@ using System.Web;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using Blackbird.WPF.API;
 using Blackbird.WPF.Messaging;
 using Blackbird.WPF.Utils;
@@ -23,6 +24,7 @@ namespace Blackbird.WPF.UI.Controls
         private async void BtnGo_OnClick(object sender, RoutedEventArgs e)
         {
             ResultStack.Children.Clear();
+            TaskStack.Children.Clear();
 
             var geocodedResult = await _webRequests.Geocode(TbStreckennetz.Text, TbKmPunkte.Text);
             var spherical = Utils.Projection.SphericalMercator.FromLonLat(geocodedResult.Longitude, geocodedResult.Latitude);
@@ -35,6 +37,9 @@ namespace Blackbird.WPF.UI.Controls
             var pinpointResults = await _webRequests.Pinpoint(geocodedResult.Longitude.ToString(), geocodedResult.Latitude.ToString());
             ResultGrid.Visibility = Visibility.Visible;
 
+            const int fontSize1 = 18;
+            const int fontSize2 = 16;
+
             var brush = (SolidColorBrush)FindResource("Brush01");
 
             var msg = string.Format("{0} incident on section {1} km {2}",
@@ -46,14 +51,14 @@ namespace Blackbird.WPF.UI.Controls
             {
                 Text = msg,
                 Margin = new Thickness(10),
-                FontSize = 12
-            });      
+                FontSize = fontSize1
+            });
 
-            ResultStack.Children.Add(new TextBlock { Text = "location", FontWeight = FontWeights.Bold, Foreground = brush });
-            ResultStack.Children.Add(new TextBlock { Text = string.Format("Lon: {0} Lat: {1}", Math.Round(geocodedResult.Longitude, 4), Math.Round(geocodedResult.Latitude, 4)) });      
+            ResultStack.Children.Add(new TextBlock { FontSize = fontSize1, Text = "location", FontWeight = FontWeights.Bold, Foreground = brush });
+            ResultStack.Children.Add(new TextBlock { FontSize = fontSize2, Text = string.Format("Lon: {0} Lat: {1}", Math.Round(geocodedResult.Longitude, 4), Math.Round(geocodedResult.Latitude, 4)) });
 
-            ResultStack.Children.Add(new TextBlock { Text = "district", FontWeight = FontWeights.Bold, Foreground = brush });
-            ResultStack.Children.Add(new TextBlock { Text = pinpointResults.District });            
+            ResultStack.Children.Add(new TextBlock { FontSize = fontSize1, Text = "district", FontWeight = FontWeights.Bold, Foreground = brush });
+            ResultStack.Children.Add(new TextBlock { FontSize = fontSize2, Text = pinpointResults.District });            
 
             ImageTunnel.Visibility = pinpointResults.IsInTunnel ? Visibility.Visible : Visibility.Collapsed;
 
@@ -64,25 +69,51 @@ namespace Blackbird.WPF.UI.Controls
                 TaskGrid.Visibility = Visibility.Visible;
                 foreach (var task in tasks)
                 {
-                    TaskStack.Children.Add(new TextBlock
+                    var gridWrapper = new Grid();
+                    gridWrapper.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+                    gridWrapper.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Auto) });
+
+                    var wrapper = new StackPanel();
+                    Grid.SetColumn(wrapper, 0);
+
+                    wrapper.Children.Add(new TextBlock
                     {
                         Text = task.TaskName,
+                        FontSize = fontSize1,
                         FontWeight = FontWeights.Bold,
                         Foreground = brush,
                         Margin = new Thickness(0, 5, 0, 0)
                     });
-                    TaskStack.Children.Add(new TextBlock {Text = task.Who});
 
-                    var number = new TextBlock {Text = task.Number};
+                    wrapper.Children.Add(new TextBlock { FontSize = fontSize2, Text = task.Who });
+
+                    var number = new TextBlock { FontSize = fontSize2, Text = task.Number };
                     number.TextDecorations.Add(TextDecorations.Underline);
-                    number.Tag = string.Format("{0};{1};{2}", 
-                        "Blackbird", 
+                    number.Tag = string.Format("{0};{1};{2}",
+                        "DB Bahn", 
                         task.Number,
                         msg + string.Format(" https://www.google.de/maps/@{0},{1},19z",
                         Math.Round(geocodedResult.Latitude, 4),
                         Math.Round(geocodedResult.Longitude, 4)));
                     number.MouseLeftButtonDown += NumberMouseLeftButtonDown;
-                    TaskStack.Children.Add(number);
+
+                    wrapper.Children.Add(number);
+                    gridWrapper.Children.Add(wrapper);
+
+                    if (task.Who.ToLower().Contains("angela"))
+                    {
+                        var image = new Image
+                        {
+                            Source = new BitmapImage(new Uri("pack://application:,,,/Blackbird.WPF;component/Resources/Images/merkel.jpg")),
+                            HorizontalAlignment = HorizontalAlignment.Right,
+                            Width = 64,
+                            Height = 64
+                        };
+                        Grid.SetColumn(image, 1);
+                        gridWrapper.Children.Add(image);
+                    }
+
+                    TaskStack.Children.Add(gridWrapper);
                 }
             }
         }

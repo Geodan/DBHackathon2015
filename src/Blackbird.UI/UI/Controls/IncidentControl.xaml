@@ -16,9 +16,9 @@
         </Grid.ColumnDefinitions>
         <Grid Grid.Row="0" Grid.Column="0" Background="{StaticResource Brush04}" >
             <StackPanel>
-                <TextBlock Text="INCIDENT INTAKE" FontWeight="Bold" HorizontalAlignment="Center" />
+                <TextBlock Text="INCIDENT INTAKE" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" />
                 <StackPanel Margin="5">
-                    <TextBlock Text="what" />
+                    <TextBlock Text="what" FontSize="16" />
                     <ComboBox x:Name="CbWhat">
                         <ComboBoxItem IsSelected="True">signal failure</ComboBoxItem>
                         <ComboBoxItem>overhead wire defect</ComboBoxItem>
@@ -27,9 +27,9 @@
                         <ComboBoxItem>bomb</ComboBoxItem>
                         <ComboBoxItem>collision with person</ComboBoxItem>                        
                     </ComboBox>
-                    <TextBlock Text="section" />
+                    <TextBlock Text="section" FontSize="16" />
                     <TextBox x:Name="TbStreckennetz" />
-                    <TextBlock Text="km point" />
+                    <TextBlock Text="km point" FontSize="16" />
                     <TextBox x:Name="TbKmPunkte" />
                     <Button Content="GO" x:Name="BtnGo" Click="BtnGo_OnClick" Margin="0,7,0,0" HorizontalAlignment="Stretch" />
                 </StackPanel>
@@ -37,7 +37,7 @@
         </Grid>
         <Grid x:Name="ResultGrid" Visibility="Collapsed" Grid.Row="1" Grid.Column="0" Margin="0,10,0,0" Background="{StaticResource Brush04}">
             <StackPanel>
-                <TextBlock Text="INFO" FontWeight="Bold" HorizontalAlignment="Center" />
+                <TextBlock Text="INFO" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" />
                 <StackPanel x:Name="ResultStack" Margin="4">
                     
                 </StackPanel>
@@ -48,7 +48,7 @@
         </Grid>
         <Grid x:Name="TaskGrid" Visibility="Collapsed" Grid.Row="2" Grid.Column="0" Margin="0,10,0,0" Background="{StaticResource Brush04}">
             <StackPanel>
-                <TextBlock Text="TASKS" FontWeight="Bold" HorizontalAlignment="Center" />
+                <TextBlock Text="TASKS" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" />
                 <StackPanel x:Name="TaskStack" Margin="4">
 
                 </StackPanel>

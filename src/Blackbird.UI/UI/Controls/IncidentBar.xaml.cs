@@ -43,8 +43,10 @@ namespace Blackbird.WPF.UI.Controls
         private void CreateNewIncident()
         {
             var newIncident = new IncidentControl();
-            IncidentStack.Children.Add(newIncident);
 
+            IncidentStack.Children.Clear();
+            IncidentStack.Children.Add(newIncident);
+            
             TimerGrid.Visibility = Visibility.Visible;
             _incidentStart = DateTime.Now;
             _timer.Start();
