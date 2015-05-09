@@ -2,7 +2,6 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using System.Windows.Shapes;
 using Blackbird.WPF.API;
 using Blackbird.WPF.Utils;
 
@@ -34,10 +33,22 @@ namespace Blackbird.WPF.UI.Controls
             ResultGrid.Visibility = Visibility.Visible;
 
             var brush = (SolidColorBrush)FindResource("Brush01");
+
+            ResultStack.Children.Add(new TextBlock { Text = string.Format("{0} incident on section {1} km {2}",
+                ((ComboBoxItem)CbWhat.SelectedItem).Content,
+                TbStreckennetz.Text,
+                TbKmPunkte.Text),
+                Margin = new Thickness(10),
+                FontSize = 12
+            });      
+
+            ResultStack.Children.Add(new TextBlock { Text = "location", FontWeight = FontWeights.Bold, Foreground = brush });
+            ResultStack.Children.Add(new TextBlock { Text = string.Format("Lon: {0} Lat: {1}", Math.Round(geocodedResult.Longitude, 4), Math.Round(geocodedResult.Latitude, 4)) });      
+
             ResultStack.Children.Add(new TextBlock { Text = "district", FontWeight = FontWeights.Bold, Foreground = brush });
             ResultStack.Children.Add(new TextBlock { Text = pinpointResults.District });            
-            ResultStack.Children.Add(new TextBlock { Text = "tunnel", FontWeight = FontWeights.Bold, Foreground = brush });
-            ResultStack.Children.Add(new TextBlock { Text = pinpointResults.IsInTunnel ? "yes" : "no"  });            
+
+            ImageTunnel.Visibility = pinpointResults.IsInTunnel ? Visibility.Visible : Visibility.Collapsed;
         }
     }
 }

@@ -18,7 +18,7 @@
                 <TextBlock Text="INCIDENT INTAKE" FontWeight="Bold" HorizontalAlignment="Center" />
                 <StackPanel Margin="5">
                     <TextBlock Text="what" />
-                    <ComboBox>
+                    <ComboBox x:Name="CbWhat">
                         <ComboBoxItem IsSelected="True">signal failure</ComboBoxItem>
                         <ComboBoxItem>overhead wire defect</ComboBoxItem>
                         <ComboBoxItem>train defect</ComboBoxItem>
@@ -26,9 +26,9 @@
                         <ComboBoxItem>bomb</ComboBoxItem>
                         <ComboBoxItem>collision with person</ComboBoxItem>                        
                     </ComboBox>
-                    <TextBlock Text="streckennetz" />
+                    <TextBlock Text="section" />
                     <TextBox x:Name="TbStreckennetz" />
-                    <TextBlock Text="km punkte" />
+                    <TextBlock Text="km point" />
                     <TextBox x:Name="TbKmPunkte" />
                     <Button Content="GO" x:Name="BtnGo" Click="BtnGo_OnClick" Margin="0,7,0,0" HorizontalAlignment="Stretch" />
                 </StackPanel>
@@ -40,6 +40,9 @@
                 <StackPanel x:Name="ResultStack" Margin="4">
                     
                 </StackPanel>
+                <Grid>
+                    <Image x:Name="ImageTunnel" Visibility="Collapsed" Width="64" Source="pack://application:,,,/Blackbird.WPF;component/Resources/Images/tunnel.png"></Image>
+                </Grid>
             </StackPanel>
         </Grid>
     </Grid>
