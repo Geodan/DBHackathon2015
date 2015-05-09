@@ -15,8 +15,7 @@ namespace Blackbird.WPF
         public MainWindow()
         {
             InitializeComponent();
-            Log4netLogger.Debug("Starting program");
-
+            Log4netLogger.Debug("Starting program");            
             var blackBirdSystemInfoObject = new BlackbirdSystemInfoObject
             {
                 MapControl = MapControl

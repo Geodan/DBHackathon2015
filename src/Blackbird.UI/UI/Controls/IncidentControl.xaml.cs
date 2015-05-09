@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Security.Policy;
+using System.Web;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using Blackbird.WPF.API;
+using Blackbird.WPF.Messaging;
 using Blackbird.WPF.Utils;
 
 namespace Blackbird.WPF.UI.Controls
@@ -34,10 +37,14 @@ namespace Blackbird.WPF.UI.Controls
 
             var brush = (SolidColorBrush)FindResource("Brush01");
 
-            ResultStack.Children.Add(new TextBlock { Text = string.Format("{0} incident on section {1} km {2}",
-                ((ComboBoxItem)CbWhat.SelectedItem).Content,
+            var msg = string.Format("{0} incident on section {1} km {2}",
+                ((ComboBoxItem) CbWhat.SelectedItem).Content,
                 TbStreckennetz.Text,
-                TbKmPunkte.Text),
+                TbKmPunkte.Text);
+
+            ResultStack.Children.Add(new TextBlock
+            {
+                Text = msg,
                 Margin = new Thickness(10),
                 FontSize = 12
             });      
@@ -49,6 +56,43 @@ namespace Blackbird.WPF.UI.Controls
             ResultStack.Children.Add(new TextBlock { Text = pinpointResults.District });            
 
             ImageTunnel.Visibility = pinpointResults.IsInTunnel ? Visibility.Visible : Visibility.Collapsed;
+
+            //Tasks
+            var tasks = pinpointResults.GetTasks();
+            if (tasks != null)
+            {
+                TaskGrid.Visibility = Visibility.Visible;
+                foreach (var task in tasks)
+                {
+                    TaskStack.Children.Add(new TextBlock
+                    {
+                        Text = task.TaskName,
+                        FontWeight = FontWeights.Bold,
+                        Foreground = brush,
+                        Margin = new Thickness(0, 5, 0, 0)
+                    });
+                    TaskStack.Children.Add(new TextBlock {Text = task.Who});
+
+                    var number = new TextBlock {Text = task.Number};
+                    number.TextDecorations.Add(TextDecorations.Underline);
+                    number.Tag = string.Format("{0};{1};{2}", 
+                        "Blackbird", 
+                        task.Number,
+                        msg + string.Format(" https://www.google.de/maps/@{0},{1},19z",
+                        Math.Round(geocodedResult.Latitude, 4),
+                        Math.Round(geocodedResult.Longitude, 4)));
+                    number.MouseLeftButtonDown += NumberMouseLeftButtonDown;
+                    TaskStack.Children.Add(number);
+                }
+            }
+        }
+
+        private async void NumberMouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            var stringMessage = ((TextBlock) sender).Tag.ToString().Split(';');            
+            var result = await SmsMessenger.SendMessage(stringMessage[0], stringMessage[1], stringMessage[2]);
+
+            MessageBox.Show("SMS SEND");
         }
     }
 }
