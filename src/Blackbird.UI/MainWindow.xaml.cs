@@ -4,6 +4,7 @@ using Blackbird.WPF.Layers;
 using Blackbird.WPF.Logging;
 using Blackbird.WPF.Utils;
 using BruTile.Tms;
+using Mapsui.Geometries;
 using Mapsui.Layers;
 
 namespace Blackbird.WPF
@@ -39,7 +40,11 @@ namespace Blackbird.WPF
             foreach (var layer in LayerInitialization.GetLayers())
             {
                 _blackBirdSystem.LayerManager.AddContextLayer(layer);
-            }            
+            }
+
+            var sphericalStart = Utils.Projection.SphericalMercator.FromLonLat(9.9167, 51.5167);
+            MapUtils.CurrentMapControl.Map.Viewport.Center = sphericalStart;
+            MapUtils.CurrentMapControl.Map.Viewport.Resolution = 1400;
         }
     }
 }

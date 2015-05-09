@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Security.Policy;
-using System.Web;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;

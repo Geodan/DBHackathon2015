@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:xaml="clr-namespace:Mapsui.UI.Xaml;assembly=Mapsui.UI.Xaml"
         xmlns:controls="clr-namespace:Blackbird.WPF.UI.Controls"
-        Title="Blackbird" Height="600" Width="800"  >
+        Title="Blackbird" Height="600" Width="800"  WindowState="Maximized" Icon="Resources/Images/icon.ico">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
