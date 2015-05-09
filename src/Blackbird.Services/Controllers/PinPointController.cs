@@ -18,9 +18,8 @@ namespace Blackbird.Services.Controllers
     public class PinPointController : ApiController
     {
         private readonly string connectionString;
-        private string tel1 = "0031062237124";
+        private string tel1 = "+31622371246";
         private string tel2 = "0031062237";
-
 
         public PinPointController()
         {
