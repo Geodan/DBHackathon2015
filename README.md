@@ -1,6 +1,6 @@
 ## Blackbird
 
-Geodan Micro Incident Management System build for dbhackathon2015 Berlin, may 2015
+Geodan Incident Management System build for dbhackathon2015 Berlin, may 2015
 
 Blackbird is an incident management system for the incident control room. Blackbird is responsible for intake, visualization, 
 analyse, reporting and notification of incidents. 
