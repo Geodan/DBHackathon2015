@@ -4,6 +4,8 @@ Geodan Micro Incident Management System build for dbhackathon2015 Berlin, may 20
 
 ![alt tag](./doc/blackbird.png)
 
+![alt tag](./doc/sms.jpg)
+
 ## Features:
 
 - Intake incident
