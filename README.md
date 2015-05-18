@@ -14,8 +14,14 @@ Geodan Micro Incident Management System build for dbhackathon2015, may 2015
 
 - UI: WPF with Mapsui mapping library
 - Services: ASP.NET Web API
-- Database: Postgress + PostGIS extension
+- Database: PostgreSQL + PostGIS extension
 - Mapping: Geoserver
+
+## Libraries
+- Mapsui https://github.com/pauldendulk/Mapsui
+- Dapper https://github.com/StackExchange/dapper-dot-net
+- Npgsql https://github.com/npgsql/npgsql
+- Web API https://github.com/aspnet
 
 ## Data
 
