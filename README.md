@@ -29,7 +29,7 @@ Geodan Micro Incident Management System build for dbhackathon2015 Berlin, may 20
 - bahnstrecken shape
 - tunnels shape
 
-Basemap: Toner Light from Stamen
+Basemap: Toner Lite from Stamen
 http://maps.stamen.com/toner-lite/#12/37.7706/-122.3782
 
 ## Screenshot
