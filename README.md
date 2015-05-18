@@ -33,7 +33,7 @@ Basemap: Toner Lite from Stamen
 http://maps.stamen.com/toner-lite/#12/37.7706/-122.3782
 
 ## Screenshot
-
+![alt tag](./doc/blackbird.png)
 
 ## Presentation powerpoint
 
