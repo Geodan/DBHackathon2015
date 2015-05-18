@@ -1,12 +1,12 @@
 ## Blackbird
 
-Geodan Micro Incident Management System build for dbhackathon2015, may 2015
+Geodan Micro Incident Management System build for dbhackathon2015 Berlin, may 2015
 
 ## Features:
 
 - Intake incident
 - Visualize incident
-- Analyse incident (geocoding + tunnel detection)
+- Analyse incident (geocoding incident + regio detection + tunnel detection)
 - Task analysis using rule based engine
 - Send SMS notifications
 
@@ -15,7 +15,7 @@ Geodan Micro Incident Management System build for dbhackathon2015, may 2015
 - UI: WPF with Mapsui mapping library
 - Services: ASP.NET Web API
 - Database: PostgreSQL + PostGIS extension
-- Mapping: Geoserver
+- Server-side Mapping: Geoserver
 
 ## Libraries
 - Mapsui https://github.com/pauldendulk/Mapsui
@@ -23,17 +23,21 @@ Geodan Micro Incident Management System build for dbhackathon2015, may 2015
 - Npgsql https://github.com/npgsql/npgsql
 - Web API https://github.com/aspnet
 
-## Data
+## Data used
 
-Data used: 
+- kilometerpoints shape
+- bahnstrecken shape
+- tunnels shape
 
-- kilometerpoints
-- bahnstrecken
-- tunnels
+Basemap: Toner Light from Stamen
+http://maps.stamen.com/toner-lite/#12/37.7706/-122.3782
 
 ## Screenshot
 
 
+## Presentation powerpoint
+
+https://github.com/Geodan/DBHackathon2015/blob/master/doc/Presentation%20team%20Geodan.pptx
 
 ## DB Bahn Web Api
 
