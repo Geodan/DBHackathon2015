@@ -10,7 +10,8 @@ Geodan Micro Incident Management System build for dbhackathon2015 Berlin, may 20
 - Visualize incident
 - Analyse incident (geocoding incident + regio detection + tunnel detection)
 - Task analysis using Blackbird Rule Based Engine™
-- Send SMS notifications to responsible people
+- Send SMS notifications to responsible people. SMS contains basic incident information + Google Maps link
+for navigation to incident. 
 
 ## Techniques
 
