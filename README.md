@@ -13,7 +13,7 @@ responsible people in order to fix the incidents more quickly and reduce costs.
 
 ## Features:
 
-- Intake incident based on Bahnstrecke and kilometer number;
+- Intake incident based on incidentype, Bahnstrecke and kilometer number;
 - Visualization incident in map;
 - Analyse incident: geocoding incident + regio detection + tunnel detection;
 - Task analysis using Blackbird Rule Based Engine™;
