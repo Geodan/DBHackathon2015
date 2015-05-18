@@ -2,13 +2,16 @@
 
 Geodan Micro Incident Management System build for dbhackathon2015 Berlin, may 2015
 
+![alt tag](./doc/blackbird.png)
+
 ## Features:
 
 - Intake incident
 - Visualize incident
 - Analyse incident (geocoding incident + regio detection + tunnel detection)
-- Task analysis using rule based engine
-- Send SMS notifications
+- Task analysis using Blackbird Rule Based Engine™
+- Send SMS notifications to responsible people. SMS contains basic incident information + Google Maps link
+for navigation to incident. 
 
 ## Techniques
 
@@ -32,10 +35,7 @@ Geodan Micro Incident Management System build for dbhackathon2015 Berlin, may 20
 Basemap: Toner Lite from Stamen
 http://maps.stamen.com/toner-lite/#12/37.7706/-122.3782
 
-## Screenshot
-
-
-## Presentation powerpoint
+## Presentation
 
 https://github.com/Geodan/DBHackathon2015/blob/master/doc/Presentation%20team%20Geodan.pptx
 
@@ -47,5 +47,5 @@ returns latitude, longitude of incident
 
 - HTTP GET /api/pinpoint?longitude=:longitude&latitude=:latitude
 
-returns distric information, is in tunnel and a list of tasks (send sms messages for now)
+returns district information, is in tunnel and a list of tasks (send sms messages for now)
 
