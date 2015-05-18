@@ -46,5 +46,5 @@ returns latitude, longitude of incident
 
 - HTTP GET /api/pinpoint?longitude=:longitude&latitude=:latitude
 
-returns distric information, is in tunnel and a list of tasks (send sms messages for now)
+returns district information, is in tunnel and a list of tasks (send sms messages for now)
 
