@@ -6,7 +6,7 @@ Geodan Micro Incident Management System build for dbhackathon2015, may 2015
 
 - Intake incident
 - Visualize incident
-- Analyse incident (tunnel detection)
+- Analyse incident (geocoding + tunnel detection)
 - Task analysis using rule based engine
 - Send SMS notifications
 
