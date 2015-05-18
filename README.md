@@ -4,7 +4,7 @@ Geodan Incident Management System build for dbhackathon2015 Berlin, may 2015
 
 Blackbird is an incident management system for the incident control room. Blackbird is responsible for intake, visualization, 
 analyse, reporting and notification of incidents. 
-Based on intelligent spatial queries and the Blackbird Rule Based Engine notifications are send to 
+Based on intelligent spatial queries and the Blackbird Rule Based Engine notifications are sent to 
 responsible people in order to fix the incidents more quickly and reduce costs.
 
 ![alt tag](./doc/blackbird.png)
